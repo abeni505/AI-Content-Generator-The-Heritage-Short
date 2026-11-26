@@ -34,5 +34,8 @@ Conducted 2026-11-26. Narration-only WAV played for three intended viewers (fami
 **Follow-up review**
 - The three listeners said the revised cut is better, but the pronunciation issue is not completely solved. Keep the narration as a draft and revisit pronunciation before final delivery.
 
+**Radio-cut assembly**
+- Assembled `outputs/final/radio_cut.mp4` as an 81-second black-screen video with the 71-second Amharic narration and a temporary synthetic placeholder score. The full mix still needs a playback review; the earlier listener feedback was on the narration WAV.
+
 ## Audience test 2: near-final cut
 Not done yet. Show the near-final film to at least three intended viewers. Record their actual comments and resulting changes here.

@@ -44,6 +44,17 @@ python pipeline/generate_narration.py
 
 This makes one Gemini TTS call for the complete narration, saves the WAV under `outputs/audio/`, and logs the call to `runs.jsonl`. The output filename is based on a hash of the narration and settings, so repeating the command with the same inputs reuses the cached file.
 
+## Assemble the Phase 1 radio cut
+
+Create a temporary, original synthetic bed, then combine it with the Amharic narration over a black screen. Replace this placeholder bed with the selected ACE-Step score during Phase 2.
+
+```sh
+python3 pipeline/create_placeholder_score.py --duration 81
+python3 pipeline/assemble_radio_cut.py
+```
+
+The MP4 is saved to `outputs/final/radio_cut.mp4`.
+
 ## Generate storyboard keyframes
 
 Load the local environment, then generate one image first so you can review the look before using the image API for all shots:
