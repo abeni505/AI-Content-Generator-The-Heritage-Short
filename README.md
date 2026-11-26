@@ -55,6 +55,16 @@ python3 pipeline/assemble_radio_cut.py
 
 The MP4 is saved to `outputs/final/radio_cut.mp4`.
 
+## Create moving shots without a GPU
+
+The project can use the brief's FFmpeg pan-and-zoom fallback when Kaggle/Colab video generation is unavailable. It creates a nine-second clip per keyframe in both aspect ratios:
+
+```sh
+python3 pipeline/generate_panzoom_clips.py
+```
+
+Clips are saved under `outputs/clips/16x9/` and `outputs/clips/9x16/`. Existing clips are skipped; use `--overwrite` to regenerate them.
+
 ## Generate storyboard keyframes
 
 Load the local environment, then generate one image first so you can review the look before using the image API for all shots:
