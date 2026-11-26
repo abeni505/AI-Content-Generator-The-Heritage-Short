@@ -14,7 +14,7 @@
       "reason": "Open on Christmas Eve, when the gift exchange finally brings weeks of secrets together.",
       "image_prompt": "A cozy family home on Christmas Eve seen at dusk, warm light in the windows and subtle holiday decorations, intimate cinematic illustration, warm amber and evergreen palette, no identifiable people, no text.",
       "motion_prompt": "Slow gentle push toward the warmly lit window; subtle movement in the light.",
-      "narration": "በገና ዋዜማ ሲደርስ፣ ለሳምንታት በልባችን የያዝነው ምስጢር ሊገለጥ ይቃረባል።",
+      "narration": "የገና ዋዜማ ሲደርስ፣ ለሳምንታት በልባችን የያዝነው ምስጢር ሊገለጥ ይቃረባል።",
       "subtitle_en": "By Christmas Eve, the secret we have kept for weeks is nearly revealed.",
       "music_cue": "Soft piano begins, intimate and expectant."
     },
@@ -24,7 +24,7 @@
       "reason": "Show the name draw that begins the surprise two or three weeks before Christmas Eve.",
       "image_prompt": "Several family members' hands place small blank paper slips on a table and gently shuffle them together; cozy home setting, warm light, cinematic close-up, hands only, no bowl, no readable names or identifying features.",
       "motion_prompt": "Slow pan across the blank paper slips as hands shuffle them together on the table.",
-      "narration": "ከገና ዋዜማ ሁለት ወይም ሦስት ሳምንታት ቀደም ብሎ፣ እያንዳንዳችን ስማችንን በወረቀት ላይ ጻፍን።",
+      "narration": "ከገና ዋዜማ ሁለት ወይም ሦስት ሳምንታት ቀደም ብሎ፣ እያንዳንዳችን ስማችንን በወረቀት ላይ እንጽፋለን።",
       "subtitle_en": "Two or three weeks before Christmas Eve, each of us wrote our name on a piece of paper.",
       "music_cue": "Add a few light, curious notes."
     },
@@ -34,7 +34,7 @@
       "reason": "Explain that each person secretly draws another person's name.",
       "image_prompt": "A hand selects one folded blank paper slip from a shuffled pile on a table, while family members wait nearby as soft, non-identifiable silhouettes; warm home light, cinematic illustration, no bowl, no readable names, no distinct faces.",
       "motion_prompt": "Slow close camera move toward the hand choosing one folded slip.",
-      "narration": "ወረቀቶቹን ካዋሃድን በኋላ፣ እያንዳንዳችን ከራሳችን የተለየ አንድ ስም መርጠን ወሰድን።",
+      "narration": "ወረቀቶቹን ከደባለቅን በኋላ፣ እያንዳንዳችን ከራሳችን የተለየ አንድ ስም መርጠን እንወስዳለን።",
       "subtitle_en": "After shuffling the slips, each of us picked a name that was not our own.",
       "music_cue": "Keep the score gentle and welcoming."
     },
@@ -54,7 +54,7 @@
       "reason": "Show the father beginning the Christmas Eve gift-giving ceremony.",
       "image_prompt": "At a warm Christmas Eve family gathering, a father shown only as a non-identifiable silhouette begins the gift exchange by offering a wrapped present to a family member; frame the gift and hands, soft festive lights, no distinct face, no readable text.",
       "motion_prompt": "Gentle camera move following the wrapped gift from the father's hands to the recipient's hands.",
-      "narration": "በገና ዋዜማ አባታችን ሥነ ሥርዓቱን ይጀምራሉ፤ በዕጣ ለደረሳቸው ሰው ስጦታቸውን ይሰጣሉ።",
+      "narration": "በገና ዋዜማ ቀንም አባታችን ሥነ ሥርዓቱን ያስጀምራል፤ በዕጣ ለደረሰው ሰው ስጦታውን ይሰጣል።",
       "subtitle_en": "On Christmas Eve, Father begins the ceremony, giving his present to the person whose name he drew.",
       "music_cue": "Let the rhythm brighten slightly while staying under the voice."
     },
@@ -64,7 +64,7 @@
       "reason": "Show that the person receiving a gift then gives their own surprise to the person they drew.",
       "image_prompt": "The recipient smiles with delight while holding a wrapped gift, then reaches to offer another wrapped gift to someone else; show hands and soft silhouettes, not identifiable faces, warm cinematic Christmas Eve light, no text.",
       "motion_prompt": "A gentle pan follows the first recipient as they offer their own wrapped gift onward.",
-      "narration": "ስጦታውን የተቀበለው ሰውም ቀጥሎ የደረሰውን ሰው ስጦታ ይሰጣል፤ ድንገቱም ይቀጥላል።",
+      "narration": "ስጦታውን የተቀበለው ሰውም ቀጥሎ የደረሰውን ሰው ስጦታ ይሰጣል፤ ሰርፕራይዙም ይቀጥላል።",
       "subtitle_en": "The person who received a gift then gives theirs to the person whose name they drew. The surprises continue.",
       "music_cue": "A gentle musical lift at the reveal, then soften."
     },
@@ -74,8 +74,8 @@
       "reason": "Show the chain of gift-giving continuing until everyone has a surprise.",
       "image_prompt": "A joyful family gift exchange continues around the room, wrapped presents passing between several pairs of hands, happy non-identifiable silhouettes, warm golden light, intimate cinematic illustration, no text.",
       "motion_prompt": "Subtle camera drift across the gathering; gentle natural movement, no exaggerated action.",
-      "narration": "ሁሉም ሰው ድንገተኛ ስጦታውን እስኪቀበል ድረስ መስጠቱ ይቀጥላል።",
-      "subtitle_en": "The giving continues until everyone has received a surprise gift.",
+      "narration": "ሁሉም ሰው ሚስጥራዊ ስጦታውን እስኪቀበል ድረስ ስርአቱ ይቀጥላል።",
+      "subtitle_en": "The giving continues until everyone has received surprise gift.",
       "music_cue": "Warm strings join softly beneath the narration."
     },
     {
@@ -84,9 +84,19 @@
       "reason": "Close on the feeling of a family tradition that brings everyone together; assembly adds the AI end card afterward.",
       "image_prompt": "The gathered gifts and a small keepsake resting beneath glowing Christmas lights at the end of the evening, peaceful and warm, cinematic illustration, no people identifiable, no text; leave the final two seconds visually calm for a fade.",
       "motion_prompt": "Slow pull back, then fade gently to black.",
-      "narration": "በስውር የወረቀት ዕጣ የጀመረው ልማድ በአንድነትና በደስታ ይጠናቀቃል፤ እርስ በርስ መተሳሰባችንን እናስታውሳለን።",
+      "narration": "በስውር በወረቀት ዕጣ የጀመረው ልማድ በአንድነትና በደስታ ይጠናቀቃል፤ እርስ በርስ መተሳሰባችንን እናስታውሳለን።",
       "subtitle_en": "Our tradition began with secret name slips and ends with us together, sharing joy and remembering our care for one another.",
       "music_cue": "Resolve gently and fade out; add the AI disclosure end card in the editing stage, not in the generated image."
+    },
+    {
+      "id": "shot_09",
+      "duration_seconds": 9,
+      "reason": "Closing line that names the tradition explicitly and seals the emotional note before the AI end card.",
+      "image_prompt": "A quiet, peaceful close-up of the family's wrapped gifts resting together beneath softly glowing Christmas Eve lights, warm golden and evergreen tones, no people visible, no readable text, cinematic illustration; hold still for a gentle fade to black.",
+      "motion_prompt": "Hold on the gifts and lights; very slow, almost imperceptible zoom out, then fade to black over the final two seconds.",
+      "narration": "ይህ የቤተሰባችን ልዩ ሥነ ሥርዓት የገና ዋዜማን ለእኛ የማይረሳ ያደርገዋል።",
+      "subtitle_en": "This unique family ceremony of ours makes Christmas Eve unforgettable for us.",
+      "music_cue": "Fade to silence; leave space for the AI disclosure end card in the editing stage."
     }
   ]
 }

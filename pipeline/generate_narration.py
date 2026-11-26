@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STORYBOARD_PATH = ROOT / "storyboard.json"
 LOG_PATH = ROOT / "runs.jsonl"
 OUTPUT_DIR = ROOT / "outputs" / "audio"
-STYLE = "Warm, clear Amharic storytelling, natural speaking pace, gentle and heartfelt, pronounce the Amharic text naturally."
+STYLE = "Warm, clear Amharic storytelling, noticeably slow and unhurried pace with clear pauses between phrases, gentle and heartfelt. Pronounce the Amharic text naturally; pronounce ገና (Christmas) with the natural, familiar Ethiopian pronunciation as a fluent native Amharic speaker would say it."
 
 
 def append_log(record: dict) -> None:
