@@ -6,6 +6,7 @@ The film is 84 seconds long, with nine storyboard shots, English subtitles, an o
 
 ## Final film
 
+- [Project report (PDF)](REPORT.pdf)
 - [Portrait (9:16), main submission](outputs/final/original_score/heritage_short_9x16.mp4)
 - [Landscape (16:9)](outputs/final/original_score/heritage_short_16x9.mp4)
 - [Google Colab notebook](notebooks/Google_Colab_Run.ipynb)
