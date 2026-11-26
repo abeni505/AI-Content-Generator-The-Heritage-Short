@@ -55,10 +55,12 @@ set +a
 python3 pipeline/generate_keyframes.py --shot shot_01
 ```
 
-Review `outputs/keyframes/shot_01.jpg`. If the image style looks right, generate the remaining keyframes with:
+Review `outputs/keyframes/shot_01.jpg`. Generate a family/style reference sheet before the other shots. FLUX.1 schnell accepts text prompts only; FLUX.2 Klein supports reference images. Install project dependencies with `python3 -m pip install -r requirements.txt`, then make one test keyframe:
 
 ```sh
-python3 pipeline/generate_keyframes.py
+python3 pipeline/generate_keyframes.py --shot shot_02 \
+  --reference outputs/keyframes/family_style_reference.png \
+  --model @cf/black-forest-labs/flux-2-klein-4b
 ```
 
-Existing images are skipped. Use `--overwrite` only when you intentionally want to regenerate existing keyframes. Each API call is recorded in `runs.jsonl`.
+Review that image before generating the remaining shots. Then run the same command without `--shot shot_02` to generate missing keyframes. Existing images are skipped. Use `--overwrite` only when you intentionally want to regenerate existing keyframes. Each API call is recorded in `runs.jsonl`.
