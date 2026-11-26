@@ -106,8 +106,9 @@ def main() -> int:
             f"[1:v]{card_filter},setsar=1[card];"
             "[main][card]concat=n=2:v=1:a=0[v];"
             "[2:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[narr][voice];"
+            f"[voice]apad=whole_dur={final_duration}[voicepad];"
             "[3:a]aresample=48000,aformat=channel_layouts=stereo,volume=0.24[music];"
-            "[music][voice]sidechaincompress=threshold=0.025:ratio=8:attack=25:release=650[ducked];"
+            "[music][voicepad]sidechaincompress=threshold=0.025:ratio=8:attack=25:release=650[ducked];"
             "[narr][ducked]amix=inputs=2:duration=longest:dropout_transition=1,"
             "alimiter=limit=0.95,afade=t=out:st=" + str(final_duration - 2) + ":d=2[a]"
         )
