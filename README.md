@@ -65,6 +65,22 @@ python3 pipeline/generate_panzoom_clips.py
 
 Clips are saved under `outputs/clips/16x9/` and `outputs/clips/9x16/`. Existing clips are skipped; use `--overwrite` to regenerate them.
 
+## Assemble a full film draft
+
+After the clips and narration are ready, assemble both formats with English subtitles, narration ducking, and the AI disclosure card:
+
+```sh
+python3 pipeline/assemble_film.py
+```
+
+This currently uses `outputs/audio/placeholder_score.wav`. To use a selected original score instead, pass its local file:
+
+```sh
+python3 pipeline/assemble_film.py --music outputs/audio/selected_original_score.wav
+```
+
+Drafts are written to `outputs/final/heritage_short_16x9.mp4` and `outputs/final/heritage_short_9x16.mp4`. The English subtitle cues follow the storyboard shot timings, so review their synchronization against the Amharic narration during playback.
+
 ## Generate storyboard keyframes
 
 Load the local environment, then generate one image first so you can review the look before using the image API for all shots:

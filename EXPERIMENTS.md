@@ -15,3 +15,9 @@
 - **Result:** All 18 clips rendered successfully. A representative clip is 9 seconds in each aspect ratio. Rendering takes about 2.4–2.8 seconds per clip and uses no GPU.
 - **Limit:** This is restrained still-image motion, not generated character animation. The vertical version has blurred fill above and below the square artwork.
 - **Decision:** Use these clips as the working assembly and continue to original score generation; replace individual clips with generated motion only if a GPU runtime becomes available in time.
+
+## Two-format film draft — 2026-11-26
+
+- **Change:** Joined the 9 approved clips in each aspect ratio, burned in English subtitles, mixed the Amharic narration with ducked placeholder music, and appended a three-second AI disclosure card.
+- **Result:** `outputs/final/heritage_short_16x9.mp4` is 1280×720 and `outputs/final/heritage_short_9x16.mp4` is 720×1280. Both are 84 seconds, within the brief's 60–90 second target.
+- **Limit:** The score is still the temporary synthetic placeholder. Captions follow storyboard shot timing and need a full playback review; replace the music and adjust caption timing before final delivery.
