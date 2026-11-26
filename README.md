@@ -43,3 +43,22 @@ python pipeline/generate_narration.py
 ```
 
 This makes one Gemini TTS call for the complete narration, saves the WAV under `outputs/audio/`, and logs the call to `runs.jsonl`. The output filename is based on a hash of the narration and settings, so repeating the command with the same inputs reuses the cached file.
+
+## Generate storyboard keyframes
+
+Load the local environment, then generate one image first so you can review the look before using the image API for all shots:
+
+```sh
+set -a
+source .env
+set +a
+python3 pipeline/generate_keyframes.py --shot shot_01
+```
+
+Review `outputs/keyframes/shot_01.jpg`. If the image style looks right, generate the remaining keyframes with:
+
+```sh
+python3 pipeline/generate_keyframes.py
+```
+
+Existing images are skipped. Use `--overwrite` only when you intentionally want to regenerate existing keyframes. Each API call is recorded in `runs.jsonl`.
