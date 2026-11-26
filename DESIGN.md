@@ -38,4 +38,4 @@ Conducted 2026-11-26. Narration-only WAV played for three intended viewers (fami
 - Assembled `outputs/final/radio_cut.mp4` as an 81-second black-screen video with the 71-second Amharic narration and a temporary synthetic placeholder score. The full mix still needs a playback review; the earlier listener feedback was on the narration WAV.
 
 ## Audience test 2: near-final cut
-Not done yet. Show the near-final film to at least three intended viewers. Record their actual comments and resulting changes here.
+Conducted 2026-11-26. The user reports that all three intended viewers really liked the revised film. Their overall response was positive; no additional specific changes were reported. This is a summary of the feedback, not a direct quotation.
