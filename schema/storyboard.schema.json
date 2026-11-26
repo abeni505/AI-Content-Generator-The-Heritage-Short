@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/heritage-short/storyboard.schema.json",
+  "title": "Heritage Short Storyboard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "language", "aspect_ratios", "style", "music", "shots"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "minLength": 1 },
+    "aspect_ratios": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["9:16", "16:9"] }
+    },
+    "style": { "type": "string", "minLength": 1 },
+    "music": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "duck_under_narration"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "duck_under_narration": { "type": "boolean" }
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "duration_seconds",
+          "reason",
+          "image_prompt",
+          "motion_prompt",
+          "narration",
+          "subtitle_en",
+          "music_cue"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+          "reason": { "type": "string", "minLength": 1 },
+          "image_prompt": { "type": "string", "minLength": 1 },
+          "motion_prompt": { "type": "string", "minLength": 1 },
+          "narration": { "type": "string", "minLength": 1 },
+          "subtitle_en": { "type": "string", "minLength": 1 },
+          "music_cue": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
