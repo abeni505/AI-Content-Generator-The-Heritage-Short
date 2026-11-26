@@ -174,13 +174,15 @@ def main() -> int:
             print(f"Skipping {shot_id}; {output_path.relative_to(ROOT)} already exists.")
             continue
 
+        shot_description = f"Shot action and composition: {shot['image_prompt']}"
+        style_description = f"Visual style: {storyboard['style']}"
         reference_instruction = (
-            "Use image 0 as the family and visual-style reference. Preserve the same five adults and "
-            "Ethiopian Christmas design; create only the shot described below.\n\n"
+            "Use image 0 only to guide the family's visual identity, clothing, and illustration style. "
+            "Do not copy image 0's camera angle, poses, or layout; follow this shot's action and framing.\n\n"
             if reference_bytes
             else ""
         )
-        prompt = f"{reference_instruction}{storyboard['style']}\n\nShot: {shot['image_prompt']}"
+        prompt = f"{shot_description}\n\n{reference_instruction}{style_description}"
         started = time.perf_counter()
         try:
             image_bytes, latency_ms = generate_image(url, token, model, prompt, reference_bytes)
