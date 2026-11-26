@@ -110,7 +110,8 @@ def main() -> int:
             "[3:a]aresample=48000,aformat=channel_layouts=stereo,volume=0.24[music];"
             "[music][voicepad]sidechaincompress=threshold=0.025:ratio=8:attack=25:release=650[ducked];"
             "[narr][ducked]amix=inputs=2:duration=longest:dropout_transition=1,"
-            "alimiter=limit=0.95,afade=t=out:st=" + str(final_duration - 2) + ":d=2[a]"
+            "alimiter=limit=0.95,afade=t=out:st=" + str(final_duration - 2) +
+            ":d=2,loudnorm=I=-14:TP=-1:LRA=11[a]"
         )
         command = [
             ffmpeg, "-hide_banner", "-y", "-f", "concat", "-safe", "0", "-i", str(listing),

@@ -17,6 +17,8 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from cache import cache_hit, digest_file, input_digest, read_manifest, record_output
+
 
 ROOT = Path(__file__).resolve().parents[1]
 STORYBOARD_PATH = ROOT / "storyboard.json"
@@ -84,6 +86,7 @@ def render_clip(ffmpeg: str, image_path: Path, output_path: Path, width: int, he
 def main() -> int:
     parser = argparse.ArgumentParser(description="Animate keyframes with slow FFmpeg pan-and-zoom movement.")
     parser.add_argument("--overwrite", action="store_true", help="Regenerate clips that already exist")
+    parser.add_argument("--shot", help="Render only one storyboard shot ID")
     args = parser.parse_args()
 
     ffmpeg = shutil.which("ffmpeg")
@@ -100,7 +103,15 @@ def main() -> int:
         "16x9": (1280, 720),
         "9x16": (720, 1280),
     }
-    for index, shot in enumerate(storyboard.get("shots", [])):
+    shots = storyboard.get("shots", [])
+    if args.shot:
+        shots = [shot for shot in shots if shot.get("id") == args.shot]
+        if not shots:
+            print(f"No storyboard shot found with ID {args.shot!r}.", file=sys.stderr)
+            return 2
+
+    cache_manifest = read_manifest()
+    for index, shot in enumerate(shots):
         shot_id = shot["id"]
         image_path = KEYFRAME_DIR / f"{shot_id}.jpg"
         if not image_path.is_file():
@@ -109,10 +120,23 @@ def main() -> int:
 
         for aspect, (width, height) in aspects.items():
             output_path = CLIP_DIR / aspect / f"{shot_id}.mp4"
-            if output_path.exists() and not args.overwrite:
-                print(f"Skipping {output_path.relative_to(ROOT)}; it already exists.")
-                continue
             duration = float(shot["duration_seconds"])
+            cache_signature = input_digest({
+                "stage": "moving_shot",
+                "model": "zoompan",
+                "image_sha256": digest_file(image_path),
+                "aspect_ratio": aspect,
+                "width": width,
+                "height": height,
+                "duration_seconds": duration,
+                "fps": FPS,
+                "movement": "slow pan and 8% zoom",
+            })
+            cache_key = f"clip/{aspect}/{shot_id}"
+            if not args.overwrite and cache_hit(cache_manifest, cache_key, cache_signature, output_path):
+                print(f"Skipping {output_path.relative_to(ROOT)}; storyboard inputs match the cached clip.")
+                continue
+
             return_code, latency_ms, error_detail = render_clip(ffmpeg, image_path, output_path, width, height, duration, index)
             if return_code:
                 append_log({
@@ -129,12 +153,14 @@ def main() -> int:
                 print(f"Failed {shot_id} ({aspect}):\n{error_detail}", file=sys.stderr)
                 return 1
 
+            record_output(cache_manifest, cache_key, cache_signature, output_path)
             append_log({
                 "stage": "moving_shot",
                 "provider": "local_ffmpeg",
                 "model": "zoompan",
                 "shot_id": shot_id,
                 "parameters": {"aspect_ratio": aspect, "duration_seconds": duration, "fps": FPS, "movement": "slow pan and 8% zoom"},
+                "cache_input_sha256": cache_signature,
                 "latency_ms": latency_ms,
                 "cost_usd": 0,
                 "status": "success",

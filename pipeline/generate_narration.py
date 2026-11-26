@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import argparse
 import hashlib
 import json
 import os
@@ -42,10 +43,11 @@ def extract_audio(response: dict) -> str | None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate cached Amharic narration from storyboard.json.")
+    parser.add_argument("--print-output-path", action="store_true", help="Print the content-addressed narration path without making an API call")
+    args = parser.parse_args()
+
     api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        print("GEMINI_API_KEY is not set. Load it from your local .env file first.", file=sys.stderr)
-        return 2
 
     try:
         storyboard = json.loads(STORYBOARD_PATH.read_text(encoding="utf-8"))
@@ -65,9 +67,15 @@ def main() -> int:
         json.dumps({"model": model, "voice": voice, "style": STYLE, "text": transcript}, ensure_ascii=False, sort_keys=True).encode("utf-8")
     ).hexdigest()[:16]
     output_path = OUTPUT_DIR / f"narration_{cache_key}.wav"
+    if args.print_output_path:
+        print(output_path)
+        return 0
     if output_path.exists():
         print(f"Narration already exists; using cached file {output_path.relative_to(ROOT)}")
         return 0
+    if not api_key:
+        print("GEMINI_API_KEY is not set. Load it from your local .env file first.", file=sys.stderr)
+        return 2
 
     payload = {
         "model": model,

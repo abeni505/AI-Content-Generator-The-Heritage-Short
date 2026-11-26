@@ -26,7 +26,9 @@
 
 - **Change:** Generated an instrumental score with ACE-Step 1.5 XL through ACE Music's hosted browser generator after the Hugging Face Space reached its limit and local model downloads proved too slow for the deadline.
 - **Output:** `outputs/audio/selected_original_score.mp3` (155 seconds). The assembler uses the first 84 seconds under the narration and adds its standard ducking and fade.
+- **Selection:** One candidate was generated and selected after listening; the user approved the score in the assembled film. The brief suggests auditioning several candidates, so this is a documented shortcut rather than a multi-candidate comparison.
 - **Result:** Rebuilt both deliverables in `outputs/final/original_score/`: 1280×720 landscape and 720×1280 portrait, each 84 seconds with stereo audio.
 - **Review:** The user reviewed both exports and approved the result after noticing and reporting that the audio dropped out at 1:10.
 - **Correction:** Padded the side-chain narration reference to the full film duration so the score continues beneath the three-second end card. Rebuilt both exports; each audio stream now runs for the full 84 seconds.
-- **Remaining audience check:** If required for submission, show the revised film to three intended viewers and record their actual comments and any resulting edits in `DESIGN.md`.
+- **Audience test:** The user reports that all three intended viewers liked the revised film; no specific changes were reported. See `DESIGN.md`.
+- **Normalization follow-up:** Added an EBU R128 `loudnorm` pass targeting -14 LUFS integrated loudness and -1 dB true peak. Both rebuilt exports measure -14.7 LUFS integrated and -1.1 dBFS true peak.

@@ -19,6 +19,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+from cache import cache_hit, digest_bytes, input_digest, read_manifest, record_output
+
 
 ROOT = Path(__file__).resolve().parents[1]
 STORYBOARD_PATH = ROOT / "storyboard.json"
@@ -149,6 +151,7 @@ def main() -> int:
     token = os.environ["CLOUDFLARE_API_TOKEN"]
     url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/{model}"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    cache_manifest = read_manifest()
 
     reference_bytes: bytes | None = None
     reference_path: str | None = None
@@ -170,10 +173,6 @@ def main() -> int:
     for shot in shots:
         shot_id = shot["id"]
         output_path = OUTPUT_DIR / f"{shot_id}.jpg"
-        if output_path.exists() and not args.overwrite:
-            print(f"Skipping {shot_id}; {output_path.relative_to(ROOT)} already exists.")
-            continue
-
         shot_description = f"Shot action and composition: {shot['image_prompt']}"
         style_description = f"Visual style: {storyboard['style']}"
         reference_instruction = (
@@ -183,16 +182,29 @@ def main() -> int:
             else ""
         )
         prompt = f"{shot_description}\n\n{reference_instruction}{style_description}"
+        cache_signature = input_digest({
+            "stage": "keyframe",
+            "model": model,
+            "prompt": prompt,
+            "reference_sha256": digest_bytes(reference_bytes) if reference_bytes is not None else None,
+        })
+        cache_key = f"keyframe/{shot_id}"
+        if not args.overwrite and cache_hit(cache_manifest, cache_key, cache_signature, output_path):
+            print(f"Skipping {shot_id}; storyboard inputs match the cached keyframe.")
+            continue
+
         started = time.perf_counter()
         try:
             image_bytes, latency_ms = generate_image(url, token, model, prompt, reference_bytes)
             output_path.write_bytes(image_bytes)
+            record_output(cache_manifest, cache_key, cache_signature, output_path)
             append_log({
                 "stage": "keyframe",
                 "provider": "cloudflare_workers_ai",
                 "model": model,
                 "shot_id": shot_id,
                 "parameters": {"prompt": prompt, "reference_sheet": reference_path},
+                "cache_input_sha256": cache_signature,
                 "seed": None,
                 "latency_ms": latency_ms,
                 "cost_usd": None,

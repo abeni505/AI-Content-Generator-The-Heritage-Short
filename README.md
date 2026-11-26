@@ -2,6 +2,22 @@
 
 A short-film project about our Christmas Eve surprise gift exchange. The storyboard is in `storyboard.json`.
 
+## Quick start
+
+The repository includes the approved storyboard, generated narration, score, keyframes, clips, and final exports. A clean clone can validate the storyboard and rebuild both final MP4s with one command, without provider API keys:
+
+```sh
+make film
+```
+
+This requires Python 3, `make`, and an FFmpeg build with `subtitles`, `drawtext`, `sidechaincompress`, and `loudnorm` filters. Outputs are written to `outputs/final/original_score/`.
+
+To regenerate production assets from the storyboard, install `requirements.txt`, copy `.env.example` to `.env`, set `GEMINI_API_KEY`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_API_TOKEN`, then run `make regenerate`. The project uses FFmpeg pan-and-zoom in place of GPU video generation. Input hashes let it reuse unchanged keyframes and clips; use `make regenerate FORCE=1` to refresh every image and clip, or `make shot SHOT=shot_03` to regenerate one shot. For a new story, add an instrumental score file and pass its path with `MUSIC=...`; score creation is currently a manual hosted ACE Music step.
+
+### Run in Google Colab
+
+Open [`notebooks/Google_Colab_Run.ipynb`](notebooks/Google_Colab_Run.ipynb) in Colab. `make film` only assembles the committed assets, so it needs no API credentials. To regenerate missing narration or keyframes in Colab, add the Gemini and Cloudflare values to Colab Secrets and follow the notebook's optional regeneration cells. Never paste credentials into a notebook cell or commit them.
+
 ## Local provider smoke tests
 
 The smoke script makes one Gemini text-to-speech request and one Cloudflare Workers AI image-generation request. It saves the sample outputs under `outputs/` and appends latency, parameters, and status to `runs.jsonl`.
@@ -73,7 +89,7 @@ After the clips and narration are ready, assemble both formats with English subt
 python3 pipeline/assemble_film.py
 ```
 
-This currently uses `outputs/audio/placeholder_score.wav`. To use the selected ACE-Step score instead, pass its MP3 and write the new versions to a separate folder so the placeholder drafts remain available:
+To use the selected ACE-Step score and write the exports to a separate folder:
 
 ```sh
 python3 pipeline/assemble_film.py \
