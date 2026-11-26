@@ -20,4 +20,11 @@
 
 - **Change:** Joined the 9 approved clips in each aspect ratio, burned in English subtitles, mixed the Amharic narration with ducked placeholder music, and appended a three-second AI disclosure card.
 - **Result:** `outputs/final/heritage_short_16x9.mp4` is 1280×720 and `outputs/final/heritage_short_9x16.mp4` is 720×1280. Both are 84 seconds, within the brief's 60–90 second target.
-- **Limit:** The score is still the temporary synthetic placeholder. Captions follow storyboard shot timing and need a full playback review; replace the music and adjust caption timing before final delivery.
+- **Limit:** The first draft used a temporary synthetic placeholder. Captions follow storyboard shot timing and need a full playback review.
+
+## Original ACE-Step score — 2026-11-26
+
+- **Change:** Generated an instrumental score with ACE-Step 1.5 XL through ACE Music's hosted browser generator after the Hugging Face Space reached its limit and local model downloads proved too slow for the deadline.
+- **Output:** `outputs/audio/selected_original_score.mp3` (155 seconds). The assembler uses the first 84 seconds under the narration and adds its standard ducking and fade.
+- **Result:** Rebuilt both deliverables in `outputs/final/original_score/`: 1280×720 landscape and 720×1280 portrait, each 84 seconds with stereo audio.
+- **Review still needed:** Listen to both complete versions, check the music level and subtitle synchronization, then record the final audience feedback.

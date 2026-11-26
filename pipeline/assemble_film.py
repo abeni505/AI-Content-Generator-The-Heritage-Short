@@ -66,6 +66,7 @@ def main() -> int:
         print(f"Could not load storyboard: {error}", file=sys.stderr)
         return 1
 
+    args.output_dir = args.output_dir.resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     temp = ROOT / "outputs/tmp/film_assembly"
     temp.mkdir(parents=True, exist_ok=True)

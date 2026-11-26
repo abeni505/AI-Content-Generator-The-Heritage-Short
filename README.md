@@ -73,13 +73,15 @@ After the clips and narration are ready, assemble both formats with English subt
 python3 pipeline/assemble_film.py
 ```
 
-This currently uses `outputs/audio/placeholder_score.wav`. To use a selected original score instead, pass its local file:
+This currently uses `outputs/audio/placeholder_score.wav`. To use the selected ACE-Step score instead, pass its MP3 and write the new versions to a separate folder so the placeholder drafts remain available:
 
 ```sh
-python3 pipeline/assemble_film.py --music outputs/audio/selected_original_score.wav
+python3 pipeline/assemble_film.py \
+  --music outputs/audio/selected_original_score.mp3 \
+  --output-dir outputs/final/original_score
 ```
 
-Drafts are written to `outputs/final/heritage_short_16x9.mp4` and `outputs/final/heritage_short_9x16.mp4`. The English subtitle cues follow the storyboard shot timings, so review their synchronization against the Amharic narration during playback.
+The original-score versions are written to `outputs/final/original_score/heritage_short_16x9.mp4` and `outputs/final/original_score/heritage_short_9x16.mp4`. The English subtitle cues follow the storyboard shot timings, so review their synchronization against the Amharic narration during playback.
 
 ## Generate storyboard keyframes
 
